@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- ══════════════════════════════════════════════════════════════
+     ⚙️  EDITE AQUI — bloco 1: identidade do negócio
+     Troque os campos abaixo para cada cliente. É só find & replace.
+     ══════════════════════════════════════════════════════════════ -->
+<title>Pizzaria Mamma Mia — Cardápio, endereço e contato</title>
+<meta name="description" content="Pizza artesanal em forno a lenha na Rudge Ramos, São Bernardo do Campo. Veja o cardápio completo e peça pelo WhatsApp." />
+<link rel="canonical" href="https://apppizzariamammamia.vercel.app/" />
+
+<!-- Open Graph — o que a Meta lê para validar o perfil comercial -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Pizzaria Mamma Mia" />
+<meta property="og:description" content="Pizza artesanal em forno a lenha na Rudge Ramos, São Bernardo do Campo. Veja o cardápio completo e peça pelo WhatsApp." />
+<meta property="og:url" content="https://apppizzariamammamia.vercel.app/" />
+<meta property="og:image" content="https://apppizzariamammamia.vercel.app/capa.png" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Dados estruturados — reforça para verificadores automáticos que é um negócio real -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Pizzaria Mamma Mia",
+  "servesCuisine": "Italiana",
+  "telephone": "+55-11-95077-2770",
+  "url": "https://apppizzariamammamia.vercel.app/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Senador Vergueiro, 3810,",
+    "addressLocality": "São Bernardo do Campo",
+    "addressRegion": "SP",
+    "postalCode": "09.602-000",
+    "addressCountry": "BR"
+  },
+  "openingHours": ["Tu-Su 18:00-23:30"]
+}
+</script>
+<!-- ══════════════════════════════════════════════════════════════ -->
+
+<style>
+  /* ⚙️ EDITE AQUI — bloco 2: paleta da marca. Troque os hex por cliente. */
+  :root {
+    --bg: #EDEAE3;
+    --paper: #F7F5F0;
+    --ink: #211F1C;
+    --ink-soft: #55524C;
+    --accent: #B23A2E;   /* cor primária — CTA, títulos de destaque */
+    --accent-2: #5B6B4F; /* cor secundária — detalhes, divisores */
+    --line: #D8D3C8;
+    --radius: 2px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Work Sans", -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- header ---- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .brand { font-size: 1.25rem; font-weight: 600; }
+  .btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--accent); color: var(--paper); }
+  .btn-outline { border-color: var(--ink); color: var(--ink); }
+
+  /* ---- hero ---- */
+  .hero {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .eyebrow {
+    color: var(--accent-2);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    max-width: 14ch;
+  }
+  .hero p {
+    max-width: 46ch;
+    color: var(--ink-soft);
+    margin-top: 18px;
+    font-size: 1.08rem;
+  }
+  .hero .actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ---- sections ---- */
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 28px;
+  }
+
+  .sobre p { max-width: 62ch; color: var(--ink-soft); }
+
+  /* ---- cardápio: divisor tipo "menu", não cards genéricos ---- */
+  .categoria { margin-bottom: 36px; }
+  .categoria h3 {
+    font-size: 1.1rem;
+    color: var(--accent-2);
+    margin-bottom: 4px;
+  }
+  .item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .item:last-child { border-bottom: none; }
+  .item .nome { font-weight: 500; white-space: nowrap; }
+  .item .desc { color: var(--ink-soft); font-size: 0.92rem; flex: 1; }
+  .item .preco { font-weight: 500; white-space: nowrap; }
+
+  /* ---- localização ---- */
+  .local-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 640px) {
+    .local-grid { grid-template-columns: 1fr; }
+  }
+  dl.info dt { color: var(--ink-soft); font-size: 0.85rem; margin-top: 16px; }
+  dl.info dt:first-child { margin-top: 0; }
+  dl.info dd { margin: 2px 0 0; font-size: 1.05rem; }
+
+  footer {
+    padding: 32px 0 48px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <!-- ⚙️ EDITE AQUI: nome do negócio -->
+    <div class="brand">Pizzaria Mamma Mia</div>
+    <a class="btn btn-primary" href="https://wa.me/5511950772770" target="_blank" rel="noopener">Pedir no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <!-- ⚙️ EDITE AQUI: bairro/cidade -->
+    <div class="eyebrow">Rudge Ramos, São Bernardo do Campo, São Paulo</div>
+    <!-- ⚙️ EDITE AQUI: nome + tagline -->
+    <h1>Pizzaria Mamma Mia</h1>
+    <p>Massa de fermentação lenta, molho de tomate fresco e forno a lenha todos os dias — do jeito que pizza tem que ser.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#cardapio">Ver cardápio</a>
+      <a class="btn btn-outline" href="https://wa.me/5511950772770" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="sobre">
+  <div class="wrap">
+    <h2>Sobre</h2>
+    <!-- ⚙️ EDITE AQUI: 2-3 frases sobre o negócio -->
+    <p>Aberta desde 2015 no bairro, a Pizzaria Mamma Mia serve pizzas napolitanas feitas com ingredientes locais. Funcionamos de terça a domingo, com entrega e retirada no balcão.</p>
+  </div>
+</section>
+
+<section id="cardapio">
+  <div class="wrap">
+    <h2>Cardápio</h2>
+
+    <!-- ⚙️ EDITE AQUI: categorias e itens do cardápio -->
+    <div class="categoria">
+      <h3>Pizzas</h3>
+      <div class="item">
+        <span class="nome">Margherita</span>
+        <span class="desc">Molho de tomate, mussarela, manjericão fresco</span>
+        <span class="preco">R$ 48</span>
+      </div>
+      <div class="item">
+        <span class="nome">Calabresa</span>
+        <span class="desc">Calabresa artesanal, cebola roxa, azeitona</span>
+        <span class="preco">R$ 52</span>
+      </div>
+      <div class="item">
+        <span class="nome">Quatro Queijos</span>
+        <span class="desc">Mussarela, gorgonzola, parmesão, provolone</span>
+        <span class="preco">R$ 56</span>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h3>Bebidas</h3>
+      <div class="item">
+        <span class="nome">Refrigerante lata</span>
+        <span class="desc">350ml</span>
+        <span class="preco">R$ 7</span>
+      </div>
+      <div class="item">
+        <span class="nome">Suco natural</span>
+        <span class="desc">Laranja ou limão, 400ml</span>
+        <span class="preco">R$ 12</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap local-grid">
+    <div>
+      <h2>Horário &amp; localização</h2>
+      <dl class="info">
+        <!-- ⚙️ EDITE AQUI: endereço, telefone, horário -->
+        <dt>Endereço</dt>
+        <dd>Av. Senador Vergueiro, 3810, São Bernardo do Campo — São Bernardo do Campo, SP</dd>
+        <dt>Telefone</dt>
+        <dd>(11) 95077-2770</dd>
+        <dt>Horário</dt>
+        <dd>Segunda a Quinta, 17:50h às 22h30</dd>
+        <dd>Sexta a Domingo, 17:50h às 23h30</dd>
+      </dl>
+    </div>
+    <div>
+      <!-- ⚙️ EDITE AQUI: link do Google Maps do endereço real -->
+      <a class="btn btn-outline" href="https://www.google.com/maps/place/Avenida%20Senador%20Vergueiro,%203810%20-%20Rudge%20Ramos%20-%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP" target="_blank" rel="noopener">Abrir no Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <!-- ⚙️ EDITE AQUI: redes sociais e ano -->
+    <span>© 2026 Pizzaria Mamma Mia</span>
+    <span>
+      <a href="https://www.instagram.com/pizzasmammamia" target="_blank" rel="noopener">Instagram</a>
+      &nbsp;·&nbsp;
+      <a href="https://wa.me/5511950772770" target="_blank" rel="noopener">WhatsApp</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.facebook.com/pizzasmammamiasbc/" target="_blank" rel="noopener">Facebook</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
